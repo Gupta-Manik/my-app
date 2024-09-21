@@ -3,8 +3,13 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
-import About from "./components/About"; // Ensure this path is correct
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import About from "./components/About";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -46,6 +51,8 @@ function App() {
             }
           />
           <Route path="/about" element={<About mode={mode} />} />
+          <Route path="*" element={<Navigate to="/" replace />} />{" "}
+          {/* Redirects all unknown routes to home */}
         </Routes>
       </div>
     </Router>
